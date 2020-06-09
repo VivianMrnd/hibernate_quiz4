@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 9, 2020, 1:01:06 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+ <class name="map.PersonDetail" table="PERSONDETAIL">
+  <id name="id" type="int">
+   <column name="ID"/>
+   <generator class="identity"/>
+  </id>
+  <property generated="never" lazy="false" name="firstname" type="java.lang.String">
+   <column name="FIRSTNAME"/>
+  </property>
+  <property generated="never" lazy="false" name="middlename" type="java.lang.String">
+   <column name="MIDDLENAME"/>
+  </property>
+  <property generated="never" lazy="false" name="lastname" type="java.lang.String">
+   <column name="LASTNAME"/>
+  </property>
+  <property generated="never" lazy="false" name="age" type="int">
+   <column name="AGE"/>
+  </property>
+  <map cascade="all" name="courses" sort="unsorted" table="COURSE">
+   <key>
+    <column name="stud_id"/>
+   </key>
+   <map-key type="java.lang.String">
+    <column name="course_type"/>
+   </map-key>
+   <one-to-many class="map.course"/>
+  </map>
+ </class>
+</hibernate-mapping>
